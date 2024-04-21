@@ -4,6 +4,7 @@ const sharedColors = {
   sky: '#48dbfb',
   fog: '#c8d6e5',
   aloes: '#00d2d3',
+  border: '#6D81A180',
 };
 
 export const lightTheme = {
