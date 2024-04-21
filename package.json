@@ -7,11 +7,32 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "generateReleaseApk": "cd android && ./gradlew assembleRelease --build-cache  && cd ../..",
+    "bundleRelease": "react-native build-android --mode=release"
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^4",
+    "@gorhom/portal": "^1.0.14",
+    "@react-navigation/bottom-tabs": "^6.5.20",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
+    "expo": "^50.0.0",
+    "i18next": "^23.11.2",
     "react": "18.2.0",
-    "react-native": "0.73.7"
+    "react-i18next": "^14.1.0",
+    "react-native": "0.73.7",
+    "react-native-gesture-handler": "^2.16.0",
+    "react-native-get-music-files": "^2.2.4",
+    "react-native-image-colors": "^2.4.0",
+    "react-native-mmkv": "^2.12.2",
+    "react-native-permissions": "^4.1.5",
+    "react-native-reanimated": "^3.8.1",
+    "react-native-safe-area-context": "^4.9.0",
+    "react-native-screens": "^3.30.1",
+    "react-native-simple-toast": "^3.3.1",
+    "react-native-system-navigation-bar": "^2.6.4",
+    "react-native-track-player": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
