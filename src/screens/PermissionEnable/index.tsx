@@ -1,12 +1,11 @@
 import {View, Text, Image, Pressable, StyleSheet} from 'react-native';
 import React from 'react';
-import {Layout} from '../../theme';
 import Images from '../../assets/images';
-import { openSettings } from 'react-native-permissions';
+import {openSettings} from 'react-native-permissions';
 
 const PermissionEnable = ({navigation}) => {
   const handleRetryPress = () => {
- openSettings()
+    openSettings();
   };
 
   return (

@@ -10,7 +10,7 @@ import {isAndroidVersionAboveS} from './helper';
 
 const AUDIO_PERMISSION =
   Platform.OS === 'android'
-    ? isAndroidVersionAboveS()
+    ? isAndroidVersionAboveS
       ? PERMISSIONS.ANDROID.READ_MEDIA_AUDIO
       : PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE
     : PERMISSIONS.IOS.MEDIA_LIBRARY;
@@ -28,7 +28,7 @@ export const checkMediaPermission = async (shouldRequestPermission = false) => {
       }
     case RESULTS.BLOCKED:
     case RESULTS.UNAVAILABLE:
-      throw Error('No more requestable!')
+      throw Error('No more rerequestable!');
   }
 };
 
@@ -39,7 +39,7 @@ const requestMediaPermission = async () => {
       return true;
     case RESULTS.DENIED:
     case RESULTS.BLOCKED:
-      throw Error('No more requestable!')
+      throw Error('No more rerequestable!');
   }
 };
 

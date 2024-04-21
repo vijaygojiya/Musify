@@ -31,19 +31,15 @@ const SongsListItem = (props: SongsListItemProps) => {
   const isActiveTrack = track?.url === url;
 
   const activeAnimatedIndex = useDerivedValue(() => {
-    return withTiming(isActiveTrack ? 1 : 0, {
-      duration: 100,
+    return withTiming(isActiveTrack ? '#1dd1a1' : '#000000aa', {
+      duration: 80,
     });
   });
   const {Colors} = useAppTheme();
 
   const animText = useAnimatedStyle(() => {
     return {
-      color: interpolateColor(
-        activeAnimatedIndex.value,
-        [0, 1],
-        [Colors.titleText, Colors.aloes],
-      ),
+      color: activeAnimatedIndex.value,
     };
   }, [isActiveTrack]);
   const playSong = async () => {

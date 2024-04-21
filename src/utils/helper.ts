@@ -12,10 +12,5 @@ export const getRandomColor = () => {
 export const getPaddingBottom = (insetsBottom: number) =>
   Math.max(insetsBottom - Platform.select({ios: 4, default: 0}), 0);
 
-export const isAndroidVersionAboveS = () => {
-  if (Platform.OS === 'android') {
-    const androidVersion = Platform.Version;
-    return androidVersion > 32;
-  }
-  return false;
-};
+export const isAndroidVersionAboveS =
+  Platform.OS === 'android' && Platform.Version > 32;

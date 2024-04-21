@@ -1,6 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {Dimensions, LayoutChangeEvent, StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   BottomTabBarHeightCallbackContext,
   BottomTabBarProps,
@@ -10,7 +9,7 @@ import {Layout} from '../theme';
 import {useAppTheme} from '../hooks';
 import Animated, {
   useAnimatedStyle,
-  useSharedValue,
+  useDerivedValue,
   withTiming,
 } from 'react-native-reanimated';
 import {
@@ -37,25 +36,19 @@ const TabBar: React.FC<BottomTabBarProps> = ({
 
   const onHeightChange = React.useContext(BottomTabBarHeightCallbackContext);
 
-  const barPosition = useSharedValue(0);
-
-  const {Colors} = useAppTheme();
-
-  const translateBarPosition = (index: number) => {
-    barPosition.value = withTiming(index * TAB_ITEM_WIDTH, {
+  const barPosition = useDerivedValue(() => {
+    return withTiming(routeIndex * TAB_ITEM_WIDTH, {
       duration: 100,
     });
-  };
+  });
+
+  const {Colors} = useAppTheme();
 
   const animStyle = useAnimatedStyle(() => {
     return {
       transform: [{translateX: barPosition.value}],
     };
   });
-
-  useEffect(() => {
-    translateBarPosition(routeIndex);
-  }, [routeIndex]);
 
   const handleLayout = (e: LayoutChangeEvent) => {
     const {height} = e.nativeEvent.layout;

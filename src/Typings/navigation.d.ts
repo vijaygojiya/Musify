@@ -1,5 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {AppRoutes, TabRoutes} from '../navigators/routes';
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import {CompositeScreenProps} from '@react-navigation/native';
 
 export type AppStackParamList = {
   [AppRoutes.Splash]: undefined;
@@ -15,11 +17,11 @@ export type TabNavParamList = {
   [TabRoutes.Artists]: undefined;
   [TabRoutes.Playlists]: undefined;
 };
-export type SplashScreenProps = NativeStackScreenProps<
-  AppStackParamList,
-  'Splash'
->;
-export type SettingsScreenProps = NativeStackScreenProps<
-  AppStackParamList,
-  'Settings'
->;
+export type AppStackScreenProps<T extends keyof AppStackParamList> =
+  NativeStackScreenProps<AppStackParamList, T>;
+
+export type MainTabScreenProps<RouteName extends keyof TabNavParamList> =
+  CompositeScreenProps<
+    BottomTabScreenProps<TabNavParamList, RouteName>,
+    NativeStackScreenProps<AppStackParamList>
+  >;

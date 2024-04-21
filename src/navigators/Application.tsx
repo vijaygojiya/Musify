@@ -17,6 +17,7 @@ import {MiniPlayer} from '../components';
 import {TRANSPARENT_COLOR} from '../utils/constant';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
+
 const getSplashScreen = () => SplashScreen;
 const getTabNavigator = () => TabNavigator;
 const getSettingsScreen = () => SettingsScreen;
@@ -47,8 +48,8 @@ const ApplicationNavigator = () => {
   return (
     <NavigationContainer theme={AppTheme}>
       <StatusBar
-        translucent={true}
-        backgroundColor={TRANSPARENT_COLOR}
+        // translucent={true}
+        backgroundColor={themeColors.backgroundColor}
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       />
       <Stack.Navigator
