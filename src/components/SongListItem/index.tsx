@@ -8,14 +8,17 @@ import Images from '../../assets/images';
 import TrackPlayer, {useActiveTrack} from 'react-native-track-player';
 import {BOTTOM_TAB_BAR_HEIGHT, MINI_PLAYER_HEIGHT} from '../../utils/constant';
 import Animated, {
-  runOnJS,
   withTiming,
   withSequence,
+  useDerivedValue,
+  useAnimatedStyle,
+  interpolateColor,
 } from 'react-native-reanimated';
 
 interface ExtraProps {
   onPress?: () => void;
   onMoreIconClick: (title?: string) => void;
+  index: number;
 }
 
 type SongsListItemProps = Partial<(typeof SongList)[number]> &
@@ -25,9 +28,24 @@ const SongsListItem = (props: SongsListItemProps) => {
   const track = useActiveTrack();
   const {translateY} = useMiniPlayer();
   const {title, artwork, artist, url, onMoreIconClick, index} = props;
+  const isActiveTrack = track?.url === url;
 
+  const activeAnimatedIndex = useDerivedValue(() => {
+    return withTiming(isActiveTrack ? 1 : 0, {
+      duration: 100,
+    });
+  });
   const {Colors} = useAppTheme();
 
+  const animText = useAnimatedStyle(() => {
+    return {
+      color: interpolateColor(
+        activeAnimatedIndex.value,
+        [0, 1],
+        [Colors.titleText, Colors.aloes],
+      ),
+    };
+  }, [isActiveTrack]);
   const playSong = async () => {
     await TrackPlayer.skip(index);
     await TrackPlayer.play();
@@ -38,7 +56,10 @@ const SongsListItem = (props: SongsListItemProps) => {
   };
 
   return (
-    <Pressable onPress={playSong} style={[Layout.rowHCenter, styles.container]}>
+    <Pressable
+      disabled={isActiveTrack}
+      onPress={playSong}
+      style={[Layout.rowHCenter, styles.container]}>
       {artwork ? (
         <Image
           source={{uri: artwork}}
@@ -46,14 +67,9 @@ const SongsListItem = (props: SongsListItemProps) => {
         />
       ) : null}
       <View style={Layout.fill}>
-        <Text
-          numberOfLines={1}
-          style={[
-            Fonts.textSmall,
-            {color: track?.url === url ? Colors.aloes : Colors.titleText},
-          ]}>
+        <Animated.Text numberOfLines={1} style={[Fonts.textSmall, animText]}>
           {title}
-        </Text>
+        </Animated.Text>
         <Text
           numberOfLines={1}
           style={[Fonts.textTiny, {color: Colors.secondaryText}]}>
