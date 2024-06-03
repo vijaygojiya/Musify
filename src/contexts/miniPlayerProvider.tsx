@@ -27,7 +27,7 @@ export function MiniPlayerProvider({
 
   const values = useMemo(() => {
     return {translateY, animatedMiniPlayerStyle};
-  }, []);
+  }, [animatedMiniPlayerStyle, translateY]);
 
   return (
     <MiniPlayerContext.Provider value={values}>

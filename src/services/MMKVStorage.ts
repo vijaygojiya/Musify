@@ -15,4 +15,4 @@ export const MMKVStorage = {
     storage.delete(key);
     return Promise.resolve();
   },
-};
+} as const;

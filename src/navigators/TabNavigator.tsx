@@ -28,12 +28,6 @@ const renderCustomTab = (props: BottomTabBarProps) => {
   return <TabBar {...props} />;
 };
 
-const getHomeScreen = () => HomeScreen;
-const getSongsScreen = () => SongsScreen;
-const getAlbumsScreen = () => AlbumsScreen;
-const getArtistsScreen = () => ArtistsScreen;
-const getPlaylistsScreen = () => PlaylistsScreen;
-
 const TabNavigator = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
@@ -67,27 +61,27 @@ const TabNavigator = () => {
       <Tab.Screen
         key="HomeScreenTab"
         name={TabRoutes.Home}
-        getComponent={getHomeScreen}
+        component={HomeScreen}
       />
       <Tab.Screen
         key="SongsScreenTab"
         name={TabRoutes.Songs}
-        getComponent={getSongsScreen}
+        component={SongsScreen}
       />
       <Tab.Screen
         key="AlbumsScreenTab"
         name={TabRoutes.Albums}
-        getComponent={getAlbumsScreen}
+        component={AlbumsScreen}
       />
       <Tab.Screen
         key="ArtistsScreenTab"
         name={TabRoutes.Artists}
-        getComponent={getArtistsScreen}
+        component={ArtistsScreen}
       />
       <Tab.Screen
         key="PlaylistsScreenTab"
         name={TabRoutes.Playlists}
-        getComponent={getPlaylistsScreen}
+        component={PlaylistsScreen}
       />
     </Tab.Navigator>
   );
