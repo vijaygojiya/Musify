@@ -1,9 +1,10 @@
 import {Image, Text, View} from 'react-native';
 import React from 'react';
-import {Fonts, Layout} from '../../theme';
+
 import styles from './styles';
-import {useAppTheme} from '../../hooks';
-import {albumsData} from '../../utils/dummydata/saavn';
+import {albumsData} from '@/utils/dummydata/saavn';
+import {useAppTheme} from '@/hooks';
+import {Fonts, Layout} from '@/theme';
 
 interface ExtraProps {
   onPress?: () => void;

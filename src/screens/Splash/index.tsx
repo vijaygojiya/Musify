@@ -1,13 +1,13 @@
 import {Text, View} from 'react-native';
 import React, {useCallback, useEffect} from 'react';
-import {Layout} from '../../theme';
+import {useAppTheme, useSetupPlayer} from '@/hooks';
+import {AppRoutes} from '@/navigators/routes';
+import {checkMediaPermission} from '@/utils/permission';
 import styles from './styles';
-import {useAppTheme, useSetupPlayer} from '../../hooks';
-import {AppRoutes} from '../../navigators/routes';
-import {SplashScreenProps} from '../../Typings/navigation';
-import {checkMediaPermission} from '../../utils/permission';
+import {Layout} from '@/theme';
+import {AppStackScreenProps} from '@/Typings/navigation';
 
-const SplashScreen = ({navigation}: SplashScreenProps) => {
+const SplashScreen = ({navigation}: AppStackScreenProps<'Splash'>) => {
   const {Colors} = useAppTheme();
   const isPlayerReady = useSetupPlayer();
 
@@ -18,7 +18,7 @@ const SplashScreen = ({navigation}: SplashScreenProps) => {
     } else {
       navigation.replace(AppRoutes.PermissionEnable);
     }
-  }, []);
+  }, [navigation]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

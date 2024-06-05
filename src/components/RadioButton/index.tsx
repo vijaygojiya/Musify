@@ -6,7 +6,7 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
-import {Layout} from '../../theme';
+import {Layout} from '@/theme';
 
 interface RadioButtonProps {
   isSelected: boolean;

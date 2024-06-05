@@ -1,5 +1,5 @@
+import {screenWidth} from '@/theme/Variables';
 import {StyleSheet} from 'react-native';
-import {screenWidth} from '../../theme/Variables';
 
 const styles = StyleSheet.create({
   container: {

@@ -1,8 +1,8 @@
 import {Text, View} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import {useAppTheme} from '../../../hooks';
-import {Layout} from '../../../theme';
+import {useAppTheme} from '@/hooks';
+import {Layout} from '@/theme';
 
 const Playlists = () => {
   const {Colors} = useAppTheme();

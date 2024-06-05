@@ -1,9 +1,9 @@
 import {FlatList, ListRenderItem, View} from 'react-native';
 import React, {useEffect} from 'react';
-import {useAppTheme} from '../../../hooks';
-import {Layout} from '../../../theme';
-import {AlbumListItem, AppBar} from '../../../components';
-import {albumsData} from '../../../utils/dummydata/saavn';
+import {useAppTheme} from '@/hooks';
+import {Layout} from '@/theme';
+import {AlbumListItem, AppBar} from '@/components';
+import {albumsData} from '@/utils/dummydata/saavn';
 import styles from './styles';
 
 const ITEM_HEIGHT = 237.4;

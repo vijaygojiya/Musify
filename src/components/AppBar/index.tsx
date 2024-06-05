@@ -1,10 +1,10 @@
 import {Image, Pressable, Text, View} from 'react-native';
 import React from 'react';
-import {useAppTheme} from '../../hooks';
-import {Fonts, Layout} from '../../theme';
 import styles from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Images from '../../assets/images';
+import Images from '@/assets/images';
+import {useAppTheme} from '@/hooks';
+import {Fonts, Layout} from '@/theme';
 
 interface AppBarTitle {
   title: string;

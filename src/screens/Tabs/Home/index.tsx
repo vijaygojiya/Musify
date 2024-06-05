@@ -1,10 +1,5 @@
 import {FlatList, ListRenderItem, View} from 'react-native';
 import React from 'react';
-import {useAppTheme, useMiniPlayer} from '../../../hooks';
-import {Layout} from '../../../theme';
-import {AppRoutes} from '../../../navigators/routes';
-
-import {AppBar} from '../../../components';
 import SongsListItem from '@/components/SongListItem';
 import {
   SortSongFields,
@@ -17,6 +12,10 @@ import useGlobal from '@/hooks/useGlobal';
 import TrackPlayer, {Track} from 'react-native-track-player';
 import {BOTTOM_TAB_BAR_HEIGHT, MINI_PLAYER_HEIGHT} from '@/utils/constant';
 import {withSequence, withTiming} from 'react-native-reanimated';
+import {AppBar} from '@/components';
+import {useAppTheme, useMiniPlayer} from '@/hooks';
+import {AppRoutes} from '@/navigators/routes';
+import {Layout} from '@/theme';
 const getKey = (_: any, index: number) => {
   return `home-songs-list-${index}`;
 };
@@ -33,7 +32,7 @@ const HomeScreen = ({navigation}: MainTabScreenProps<'Home'>) => {
       return getAll({
         limit: 10,
         offset: 0,
-        coverQuality: 50,
+        coverQuality: 0,
         minSongDuration: 1000,
         sortBy: SortSongFields.TITLE,
         sortOrder: SortSongOrder.DESC,
@@ -49,7 +48,7 @@ const HomeScreen = ({navigation}: MainTabScreenProps<'Home'>) => {
               album: song.album,
               artist: song.artist,
               duration: song.duration,
-              artwork: song.cover,
+              // artwork: song.cover,
               genre: song.genre,
             };
           }),
@@ -105,7 +104,6 @@ const HomeScreen = ({navigation}: MainTabScreenProps<'Home'>) => {
 
   return (
     <View style={[Layout.fill, {backgroundColor: Colors.backgroundColor}]}>
-      <AppBar title="Home" onMoreIconPress={handelOpenSettings} />
       <FlatList
         // ref={ref}
         scrollEventThrottle={16}

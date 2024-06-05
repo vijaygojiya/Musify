@@ -1,9 +1,9 @@
 import {Pressable, Text, View} from 'react-native';
 import React from 'react';
-import SongList from '../../utils/dummydata/song';
+import SongList from '@/utils/dummydata/song';
 import styles from './styles';
-import {Fonts} from '../../theme';
-import {useAppTheme} from '../../hooks';
+import {Fonts} from '@/theme';
+import {useAppTheme} from '@/hooks';
 import {BottomSheetView} from '@gorhom/bottom-sheet';
 
 const More_Options = [

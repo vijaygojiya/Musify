@@ -10,10 +10,7 @@ import TrackPlayer, {
 
 import styles from './styles';
 import ProgressBar from '../AppProgressBar';
-import {useAppTheme, useDebouncedValue, useMiniPlayer} from '../../hooks';
-import {screenWidth} from '../../theme/Variables';
-import Images from '../../assets/images';
-import {Fonts, Layout} from '../../theme';
+
 import MarqueeText from '../MarqueeText';
 import IconButton from '../IconButton';
 import Animated, {
@@ -22,6 +19,10 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import {getColors} from 'react-native-image-colors';
+import Images from '@/assets/images';
+import {useAppTheme, useMiniPlayer, useDebouncedValue} from '@/hooks';
+import {Fonts, Layout} from '@/theme';
+import {screenWidth} from '@/theme/Variables';
 
 const MiniPlayer = () => {
   const track = useActiveTrack();

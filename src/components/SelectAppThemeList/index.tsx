@@ -1,9 +1,9 @@
 import {Text, View} from 'react-native';
 import React, {useState} from 'react';
-import {Layout} from '../../theme';
+import {Layout} from '@/theme';
 import styles from './styles';
-import {useAppTheme} from '../../hooks';
-import {TypeOfAppTheme} from '../../utils/enum';
+import {useAppTheme} from '@/hooks';
+import {TypeOfAppTheme} from '@/utils/enum';
 import RadioButton from '../RadioButton';
 
 const ThemeOptions = Object.values(TypeOfAppTheme);

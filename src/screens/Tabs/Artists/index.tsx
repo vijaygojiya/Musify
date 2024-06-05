@@ -1,11 +1,11 @@
 import {ListRenderItem, View} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import {useAppTheme} from '../../../hooks';
-import {Layout} from '../../../theme';
-import {AppBar, ArtistListItem} from '../../../components';
 import {FlatList} from 'react-native-gesture-handler';
-import ArtistsList from '../../../utils/dummydata/artists';
+import {ArtistListItem, AppBar} from '@/components';
+import {useAppTheme} from '@/hooks';
+import ArtistsList from '@/utils/dummydata/artists';
+import {Layout} from '@/theme';
 
 const ArtistsScreen = () => {
   const {Colors} = useAppTheme();

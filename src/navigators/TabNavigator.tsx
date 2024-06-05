@@ -17,11 +17,12 @@ import TabBar from './TabBar';
 import {TabNavParamList} from '../Typings/navigation';
 import {useNavigation} from '@react-navigation/native';
 import {useActiveTrack} from 'react-native-track-player';
-import {useMiniPlayer} from '../hooks';
+import {useAppTheme, useMiniPlayer} from '../hooks';
 import {BOTTOM_TAB_BAR_HEIGHT, MINI_PLAYER_HEIGHT} from '../utils/constant';
 import {withTiming} from 'react-native-reanimated';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {getPaddingBottom} from '../utils/helper';
+import {Fonts} from '@/theme';
 const Tab = createBottomTabNavigator<TabNavParamList>();
 
 const renderCustomTab = (props: BottomTabBarProps) => {
@@ -33,6 +34,7 @@ const TabNavigator = () => {
   const navigation = useNavigation();
   const track = useActiveTrack();
   const {translateY} = useMiniPlayer();
+  const {Colors} = useAppTheme();
   useEffect(() => {
     const unsub = navigation.addListener('focus', () => {
       if (track?.url) {
@@ -54,7 +56,11 @@ const TabNavigator = () => {
     <Tab.Navigator
       backBehavior="initialRoute"
       screenOptions={{
-        headerShown: false,
+        headerTitleStyle: [{color: Colors.titleText}, Fonts.textHeading],
+        headerBackgroundContainerStyle: {
+          backgroundColor: Colors.backgroundColor,
+        },
+        // headerShown: false,
         lazy: true,
       }}
       tabBar={renderCustomTab}>

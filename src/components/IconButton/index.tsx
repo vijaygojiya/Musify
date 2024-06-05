@@ -8,7 +8,7 @@ import {
   PressableProps,
 } from 'react-native';
 import React, {FC, memo} from 'react';
-import {useAppTheme} from '../../hooks';
+import {useAppTheme} from '@/hooks';
 
 interface IconButtonProps {
   containerProps?: PressableProps;

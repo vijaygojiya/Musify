@@ -1,10 +1,10 @@
 import {Image, Pressable, Text, View} from 'react-native';
 import React from 'react';
-import {Layout} from '../../theme';
+import {Layout} from '@/theme';
 import styles from './styles';
-import {useAppTheme} from '../../hooks';
-import Images from '../../assets/images';
-import {SettingTypes} from '../../utils/constant';
+import {useAppTheme} from '@/hooks';
+import Images from '@/assets/images';
+import {SettingTypes} from '@/utils/constant';
 
 interface SettingListItemProps extends SettingTypes {
   onItemPress?: () => void;

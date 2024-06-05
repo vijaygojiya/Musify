@@ -8,11 +8,11 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import {screenWidth} from '../../theme/Variables';
-import {Layout} from '../../theme';
-import {useAppTheme} from '../../hooks';
-import Images from '../../assets/images';
-import {TabNavParamList} from '../../Typings/navigation';
+import {screenWidth} from '@/theme/Variables';
+import {Layout} from '@/theme';
+import {useAppTheme} from '@/hooks';
+import Images from '@/assets/images';
+import {TabNavParamList} from '@/Typings/navigation';
 import {RouteProp} from '@react-navigation/native';
 
 interface ItemTabProps {

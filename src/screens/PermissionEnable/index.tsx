@@ -1,6 +1,6 @@
 import {View, Text, Image, Pressable, StyleSheet} from 'react-native';
 import React from 'react';
-import Images from '../../assets/images';
+import Images from '@/assets/images';
 import {openSettings} from 'react-native-permissions';
 
 const PermissionEnable = ({navigation}) => {

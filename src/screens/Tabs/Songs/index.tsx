@@ -1,25 +1,27 @@
 import {ListRenderItem, View} from 'react-native';
-import React, {useRef, useState} from 'react';
-import {useAppTheme, useMiniPlayer, useScrollHandler} from '../../../hooks';
-import {Layout} from '../../../theme';
-import SongList from '../../../utils/dummydata/song';
-import SongsListItem from '../../../components/SongListItem';
+import React, {useLayoutEffect, useRef, useState} from 'react';
 import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
   BottomSheetModal,
 } from '@gorhom/bottom-sheet';
-import {AppBar, SongsMoreOptionSheet} from '../../../components';
-import {
-  BOTTOM_TAB_BAR_HEIGHT,
-  HEADER_BAR_HEIGHT,
-  MINI_PLAYER_HEIGHT,
-} from '../../../utils/constant';
 import Animated, {withSequence, withTiming} from 'react-native-reanimated';
 import styles from './styles';
 import {useScrollToTop} from '@react-navigation/native';
 import useGlobal from '@/hooks/useGlobal';
 import TrackPlayer from 'react-native-track-player';
+import {SongsMoreOptionSheet, AppBar} from '@/components';
+import SongsListItem from '@/components/SongListItem';
+import {useAppTheme, useMiniPlayer, useScrollHandler} from '@/hooks';
+import {
+  MINI_PLAYER_HEIGHT,
+  BOTTOM_TAB_BAR_HEIGHT,
+  HEADER_BAR_HEIGHT,
+} from '@/utils/constant';
+import SongList from '@/utils/dummydata/song';
+import {Layout} from '@/theme';
+import {useHeaderHeight} from '@react-navigation/elements';
+import {MainTabScreenProps} from '@/Typings/navigation';
 
 const renderSheetBackDrop = (props: BottomSheetBackdropProps) => {
   return (
@@ -46,12 +48,7 @@ const getSongItemLayout = (_, index: number) => ({
   index,
 });
 
-const SongsScreen = () => {
-  const [headerBarHeight, setHeaderBarHeight] = useState(0);
-
-  const {headerMinimalShellTransform, headerHeight, scrollHandler} =
-    useScrollHandler();
-
+const SongsScreen = ({navigation}: MainTabScreenProps<'Songs'>) => {
   const ref = React.useRef(null);
 
   useScrollToTop(ref);
@@ -99,27 +96,9 @@ const SongsScreen = () => {
 
   return (
     <View style={(Layout.fill, {backgroundColor: Colors.backgroundColor})}>
-      {/* <StatusBar backgroundColor={Colors.backgroundColorwhite} /> */}
-      <Animated.View
-        onLayout={e => {
-          headerHeight.value = e.nativeEvent.layout.height;
-          setHeaderBarHeight(e.nativeEvent.layout.height);
-        }}
-        style={[
-          styles.headerContainer,
-          {
-            backgroundColor: Colors.backgroundColor,
-            borderBottomColor: Colors.border,
-          },
-          headerMinimalShellTransform,
-        ]}>
-        <AppBar title="Songs" />
-      </Animated.View>
       <Animated.FlatList
         ref={ref}
-        contentOffset={{x: 0, y: headerBarHeight * -1}}
         scrollEventThrottle={1}
-        onScroll={scrollHandler}
         data={SongList}
         renderItem={renderSongItem}
         keyExtractor={getKey}
@@ -127,7 +106,6 @@ const SongsScreen = () => {
         initialNumToRender={10}
         maxToRenderPerBatch={10}
         getItemLayout={getSongItemLayout}
-        contentContainerStyle={{paddingVertical: HEADER_BAR_HEIGHT}}
       />
       <BottomSheetModal
         handleComponent={() => null}

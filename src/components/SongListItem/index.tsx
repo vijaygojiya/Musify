@@ -1,10 +1,10 @@
 import {Image, Pressable, Text, View} from 'react-native';
 import React from 'react';
-import {Fonts, Layout} from '../../theme';
-import SongList from '../../utils/dummydata/song';
+import {Fonts, Layout} from '@/theme';
+import SongList from '@/utils/dummydata/song';
 import styles from './styles';
-import {useAppTheme} from '../../hooks';
-import Images from '../../assets/images';
+import {useAppTheme} from '@/hooks';
+import Images from '@/assets/images';
 import {useActiveTrack} from 'react-native-track-player';
 import Animated, {
   withTiming,
@@ -57,6 +57,7 @@ const SongsListItem = (props: SongsListItemProps) => {
       style={[Layout.rowHCenter, styles.container]}>
       <Image
         source={{uri: artwork}}
+        defaultSource={Images.controls.play}
         style={[styles.artWorkImg, {backgroundColor: Colors.secondaryText}]}
       />
 
